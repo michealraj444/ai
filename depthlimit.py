@@ -5,7 +5,7 @@ path=list()
 def addedge(a,b):
     graph[a].append(b)
     graph[b].append(a)
-def dfs(n,target,depth):
+def depthlimit(n,target,depth):
     path.append(n)
     if n==target:
         return True
@@ -15,7 +15,7 @@ def dfs(n,target,depth):
         v.add(n)
         for i in graph[n]:
             if i not in v:
-                if dfs(i,target,depth-1)==True:
+                if depthlimit(i,target,depth-1)==True:
                     return True
                 path.remove(i)
 n=int(input("Enter the no of edges"))
@@ -26,7 +26,7 @@ for i in range(n):
 target=int(input("Enter the target"))
 depth=int(input("Enter the max depth"))
 source=int(input("Enter the source"))
-if dfs(source,target,depth)==True:
+if depthlimit(source,target,depth)==True:
     print("Target can be reached from source within max depth")
     print("Path : ",path)
 else:
